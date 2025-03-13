@@ -1,0 +1,52 @@
+---
+# tasks file for docker_role
+- name: Actualizar lista de paquetes
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Instalar dependencias necesarias
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+  become: yes
+
+- name: Agregar clave GPG de Docker
+  ansible.builtin.shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  become: yes
+
+- name: Agregar repositorio de Docker
+  ansible.builtin.shell: |
+    add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  become: yes
+
+- name: Actualizar lista de paquetes después de agregar repositorio
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Instalar Docker
+  apt:
+    name: docker-ce
+    state: present
+  become: yes
+
+- name: Habilitar y arrancar servicio Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Agregar usuario actual al grupo Docker
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  become: yes
+  notify: Reiniciar sesión

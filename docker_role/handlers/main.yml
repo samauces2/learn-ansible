@@ -1,0 +1,5 @@
+---
+# handlers file for docker_role
+- name: Reiniciar sesión
+  debug:
+    msg: "Es necesario cerrar sesión y volver a iniciar para aplicar los cambios del grupo Docker"
