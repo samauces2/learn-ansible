@@ -1,4 +1,26 @@
-# learn-ansible
-repository to test and learn about ansible !
+# Ansible Nginx Setup
+Este repositorio contiene un playbook de Ansible para configurar Nginx en servidores Linux automáticamente.
 
-Scenario — Suppose we have 100 servers, and we want to install nginx in all the servers at the same time. so how would we perform this task? I don’t think it’s convenient way to manually go to each server and install nginx one by one. so here Ansible comes in the picture. so now with the help of this amazing tool we can install nginx in all the 100 servers just by a single click. yes, you read it right, this is the magic of Ansible.
+## 📌 Requisitos
+- Ansible instalado
+- Acceso a un servidor con SSH habilitado
+
+## 🚀 Uso
+1. Clonar este repositorio:
+   ```sh
+   git clone https://github.com/tu_usuario/ansible-nginx-setup.git
+   cd ansible-nginx-setup
+
+2. Definir el inventario en inventory.ini.
+3. Ejecutar el playbook:
+    ansible-playbook -i inventory.ini playbook.yml
+
+---
+
+## **Próximos Pasos**
+1. **Crear el repositorio en GitHub**.
+2. **Subir la estructura base**.
+3. **Probarlo en una VM local o en Azure**.
+4. **Mejorarlo con logs, seguridad y balanceo de carga**.
+
+¿Qué te parece este plan? ¿Quieres que modifiquemos algo o pasamos a implementarlo? 🚀

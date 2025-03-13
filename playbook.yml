@@ -1,0 +1,5 @@
+- name: Configurar Servidor Nginx
+  hosts: webservers
+  become: true
+  roles:
+    - nginx
